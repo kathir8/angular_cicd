@@ -10,6 +10,7 @@ import { ConfigService } from './core/services/config.service';
 })
 export class App {
   protected readonly title = signal('angular_cicd');
+  const a = ;
   protected readonly isProd = signal<boolean | null>(null);
       private configService = inject(ConfigService);
       constructor() {
