@@ -1,12 +1,22 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
-
+import { ConfigService } from './core/services/config.service';
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideZonelessChangeDetection()]
+      providers: [provideZonelessChangeDetection(),
+      {
+        provide: ConfigService,
+        useValue: {
+          getConfig: () => ({
+            prod: false,
+            appName: 'Angular CI/CD'
+          })
+        }
+      }
+      ]
     }).compileComponents();
   });
 
