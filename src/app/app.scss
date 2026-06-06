@@ -1,0 +1,9 @@
+.box{
+    height: 100vh;
+    &.bg-green{
+        background-color: #28a745;
+    }
+    &.bg-red{
+        background-color: #dc3545;
+    }
+}
