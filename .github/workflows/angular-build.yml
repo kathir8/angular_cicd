@@ -31,6 +31,9 @@ jobs:
       - name: Run Lint
         run: npx ng lint
 
+      - name: Create Production Config
+        run: cp src/public/config/config.prod.json src/public/config/config.json
+
       - name: Run Tests
         run: npm run test -- --watch=false --browsers=ChromeHeadless
 
@@ -44,9 +47,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist/angular_cicd/browser
-
-      - name: Create Production Config
-        run: cp src/public/config/config.prod.json src/public/config/config.json
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
