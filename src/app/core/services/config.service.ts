@@ -13,7 +13,7 @@ export class ConfigService {
   private config!: AppConfig;
 
   async loadConfig(): Promise<void> {
-    const response = await fetch('/config/config.json');
+    const response = await fetch('config/config.json');
 
     this.config = await response.json();
   }
