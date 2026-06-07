@@ -1,12 +1,17 @@
-name: Angular Build
+name: Angular CI CD
 
 on:
   push:
     branches:
       - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
 
@@ -30,10 +35,15 @@ jobs:
         run: npm run test -- --watch=false --browsers=ChromeHeadless
 
       - name: Build Angular App
-        run: npm run build
+        run: npm run build -- --base-href /angular_cicd/
 
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: angular-dist
           path: dist/angular_cicd/browser
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
