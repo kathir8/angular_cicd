@@ -46,7 +46,7 @@ jobs:
           path: dist/angular_cicd/browser
 
       - name: Create Production Config
-        run: cp src/config/config.prod.json src/config/config.json
+        run: cp src/public/config/config.prod.json src/public/config/config.json
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
